@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rockstarImage = document.getElementById('rockstar-image');
 
     heart.addEventListener('mouseenter', () => {
-        // You could add classes here for more complex JS-driven animations
+        // The display logic is primarily in CSS, but this remains for future JS-driven features.
         // rockstarImage.classList.add('visible'); 
     });
 

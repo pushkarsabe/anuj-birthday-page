@@ -53,6 +53,13 @@ h2,
     animation: header-pop 1s ease-out forwards;
 }
 
+/* FIX: Ensure header content is always centered */
+.birthday-header h1,
+.birthday-header p {
+    text-align: center;
+    /* Ensure P tag is also centered */
+}
+
 .birthday-header h1 {
     font-size: 3rem;
     margin-bottom: 5px;
@@ -140,12 +147,11 @@ h2,
     transform: translate(-50%, -50%);
     opacity: 0;
     /* Initially hidden */
+    z-index: 12;
     transition: opacity 0.8s ease-in-out;
     width: 90%;
     max-width: 500px;
-    z-index: 5;
     pointer-events: none;
-    /* Allows heart to receive hover */
 }
 
 #rockstar-image {
@@ -167,7 +173,7 @@ h2,
     width: 250px;
     height: 220px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 15;
     transition: transform 0.5s ease;
 }
 
@@ -178,7 +184,8 @@ h2,
     height: 150px;
     background-color: var(--heart-color);
     border-radius: 50% 50% 0 0;
-    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s;
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.8s;
+    /* Increased opacity transition time */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -202,39 +209,35 @@ h2,
     color: var(--text-color-light);
     font-weight: 700;
     font-size: 1.2rem;
-    z-index: 11;
+    z-index: 16;
+    /* Higher than heart pieces */
     transition: opacity 0.5s;
     pointer-events: none;
 }
 
-/* Heart Hover Effect (Opening) */
+/* Heart Hover Effect (Opening) - FIX: Increased translation distance to fully clear the image and set opacity to 0. */
 .big-red-heart:hover .heart-left {
-    transform: translate(-200px, 0) rotate(-75deg) scale(0.9);
-    /* Moves left and rotates more */
+    transform: translate(-400px, 0) rotate(-75deg) scale(0.9);
+    /* Moved from -200px to -400px */
     opacity: 0;
 }
 
 .big-red-heart:hover .heart-right {
-    transform: translate(200px, 0) rotate(75deg) scale(0.9);
-    /* Moves right and rotates more */
+    transform: translate(400px, 0) rotate(75deg) scale(0.9);
+    /* Moved from 200px to 400px */
     opacity: 0;
 }
 
 .big-red-heart:hover .heart-text {
     opacity: 0;
-    /* Hide text */
 }
 
 .big-red-heart:hover~.image-behind-heart {
     opacity: 1;
-    /* Show image */
-    z-index: 10;
-    /* Bring image above heart pieces as they fade */
 }
 
 .big-red-heart:hover~.image-behind-heart #rockstar-image {
     transform: scale(1);
-    /* Scale up image */
 }
 
 /* --- Section 4: Game Placeholder --- */
@@ -272,6 +275,13 @@ h2,
     height: 100%;
 }
 
+/* FIX: Added style to make text visible if video fails to load */
+.video-player-area h2 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+
 /* --- Section 6: Footer --- */
 .birthday-footer {
     background: var(--text-color-dark);
@@ -287,8 +297,6 @@ h2,
 }
 
 /* --- Godly CSS Animations --- */
-
-/* 1. Header Pop-in */
 @keyframes header-pop {
     0% {
         transform: scale(0.5);
@@ -305,7 +313,6 @@ h2,
     }
 }
 
-/* 2. Text Glow */
 @keyframes text-glow {
     from {
         text-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color);
@@ -316,7 +323,6 @@ h2,
     }
 }
 
-/* 3. Hero Image Pulse */
 @keyframes pulse {
     from {
         transform: scale(1);
@@ -327,7 +333,6 @@ h2,
     }
 }
 
-/* 4. Hero Image Float */
 @keyframes float-up {
     0% {
         transform: translateY(0);
@@ -342,7 +347,6 @@ h2,
     }
 }
 
-/* 5. Footer Slide Up */
 @keyframes slide-up {
     from {
         transform: translateY(20px);
@@ -356,14 +360,13 @@ h2,
 }
 
 /* --- Media Queries for Responsiveness (Mobile First) --- */
-
-/* Small devices (phones) */
 @media (max-width: 600px) {
     .birthday-header h1 {
         font-size: 2rem;
     }
 
     .birthday-header p {
+        text-align: center;
         font-size: 1.2rem;
     }
 
