@@ -172,6 +172,8 @@ h2,
     cursor: pointer;
     z-index: 10;
     transition: transform 0.5s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .heart-left,
@@ -200,15 +202,16 @@ h2,
 
 .heart-text {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: var(--text-color-light);
+    color: #ffffff;
     font-weight: 700;
     font-size: 1.2rem;
     z-index: 12;
     transition: opacity 0.5s;
     pointer-events: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .big-red-heart:hover .heart-left {

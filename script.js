@@ -231,28 +231,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 4. Mobile Touch Support for Heart ---
     const hoverHeart = document.getElementById('hover-heart');
     const imageBehindHeart = document.querySelector('.image-behind-heart');
+    const heartText = document.querySelector('.heart-text');
     let heartRevealed = false;
 
-    // Function to reveal/hide heart
-    function toggleHeart() {
-        if (!heartRevealed) {
-            // Reveal the image
+    // Check if it's a touch device
+    const isTouchDevice = (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
+
+    console.log('Is touch device:', isTouchDevice); // Debug log
+
+    // Change text for mobile devices
+    if (isTouchDevice && heartText) {
+        heartText.textContent = 'Tap Me!';
+    }
+
+    // Function to toggle heart
+    function toggleHeart(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        console.log('Heart clicked/tapped!'); // Debug log
+
+        heartRevealed = !heartRevealed;
+
+        if (heartRevealed) {
             hoverHeart.classList.add('heart-revealed');
             imageBehindHeart.classList.add('image-revealed');
-            heartRevealed = true;
+            console.log('Heart revealed'); // Debug log
         } else {
-            // Hide the image
             hoverHeart.classList.remove('heart-revealed');
             imageBehindHeart.classList.remove('image-revealed');
-            heartRevealed = false;
+            console.log('Heart hidden'); // Debug log
         }
     }
 
-    // Touch support for mobile
-    if ('ontouchstart' in window) {
-        hoverHeart.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleHeart();
-        });
-    }
+    // Add event listeners - use both touch and click for better compatibility
+    hoverHeart.addEventListener('touchend', toggleHeart, { passive: false });
+    hoverHeart.addEventListener('click', toggleHeart);
 });
