@@ -34,20 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
 
     // --- 2. Interactive Heart Script (Optional JS control, mostly done with CSS) ---
-    // This is a minimal JS for future enhancements or touch support if needed,
-    // but the main heart logic is in the CSS :hover.
-
-    const heart = document.getElementById('hover-heart');
-    const rockstarImage = document.getElementById('rockstar-image');
-
-    heart.addEventListener('mouseenter', () => {
-        // The display logic is primarily in CSS, but this remains for future JS-driven features.
-        // rockstarImage.classList.add('visible'); 
-    });
-
-    heart.addEventListener('mouseleave', () => {
-        // rockstarImage.classList.remove('visible'); 
-    });
+    // The main heart logic is now fully managed by the CSS :hover.
 
     // --- 3. Confetti Animation (Simulated Confetti) ---
     // A simple function to add a visual celebration effect
@@ -68,9 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-
-    // You can call createConfetti() if you want it to run automatically on load
-    // createConfetti(); 
 
     // Add a simple CSS style for the confetti animation in the JS for quick deployment
     const style = document.createElement('style');
