@@ -144,8 +144,8 @@ h2,
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-    /* FIX: Increased z-index to 20 so it layers above the heart wrapper when visible */
-    z-index: 20; 
+    /* FIX: Setting a very high Z-index to guarantee it layers on top */
+    z-index: 999; 
     transition: opacity 0.8s ease-in-out;
     width: 90%;
     max-width: 500px;
@@ -169,7 +169,7 @@ h2,
     width: 250px;
     height: 220px;
     cursor: pointer;
-    /* FIX: Set z-index to 10 so the image (z-index 20) appears on top of this wrapper */
+    /* FIX: Set z-index to 10 - must be lower than the image layer (999) */
     z-index: 10;
     transition: transform 0.5s ease;
 }
@@ -183,7 +183,6 @@ h2,
     border-radius: 50% 50% 0 0;
     /* FIX: Very fast opacity transition (0.1s) for the pieces to disappear quickly */
     transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.1s; 
-    /* The pieces themselves can have a lower z-index than the wrapper */
     z-index: 11;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -231,6 +230,8 @@ h2,
 /* Key: Make image visible */
 .big-red-heart:hover~.image-behind-heart {
     opacity: 1;
+    /* FIX: Force transformation to be correct and visible. The !important is for ultimate guarantee. */
+    transform: translate(-50%, -50%) scale(1) !important; 
 }
 
 .big-red-heart:hover~.image-behind-heart #rockstar-image {
