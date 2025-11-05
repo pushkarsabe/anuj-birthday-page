@@ -53,7 +53,6 @@ h2,
     animation: header-pop 1s ease-out forwards;
 }
 
-/* FIX: Ensure header content is always centered */
 .birthday-header h1,
 .birthday-header p {
     text-align: center;
@@ -109,7 +108,6 @@ h2,
     width: 100%;
     max-width: 400px;
     border-radius: 50%;
-    /* Circular image */
     border: 8px solid var(--secondary-color);
     box-shadow: 0 0 30px rgba(255, 77, 109, 0.6);
     transition: transform 0.5s ease-in-out;
@@ -138,17 +136,24 @@ h2,
     overflow: hidden;
 }
 
+.heart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+}
+
 .image-behind-heart {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-    /* FIX: Setting a very high Z-index to guarantee it layers on top */
-    z-index: 999; 
+    z-index: 5;
     transition: opacity 0.8s ease-in-out;
     width: 90%;
     max-width: 500px;
+    pointer-events: none;
 }
 
 #rockstar-image {
@@ -169,7 +174,6 @@ h2,
     width: 250px;
     height: 220px;
     cursor: pointer;
-    /* FIX: Set z-index to 10 - must be lower than the image layer (999) */
     z-index: 10;
     transition: transform 0.5s ease;
 }
@@ -181,8 +185,7 @@ h2,
     height: 150px;
     background-color: var(--heart-color);
     border-radius: 50% 50% 0 0;
-    /* FIX: Very fast opacity transition (0.1s) for the pieces to disappear quickly */
-    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.1s; 
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s;
     z-index: 11;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -227,14 +230,13 @@ h2,
     opacity: 0;
 }
 
-/* Key: Make image visible */
-.big-red-heart:hover~.image-behind-heart {
+/* Make image visible when heart is hovered */
+.big-red-heart:hover+.image-behind-heart {
     opacity: 1;
-    /* FIX: Force transformation to be correct and visible. The !important is for ultimate guarantee. */
-    transform: translate(-50%, -50%) scale(1) !important; 
+    z-index: 999;
 }
 
-.big-red-heart:hover~.image-behind-heart #rockstar-image {
+.big-red-heart:hover+.image-behind-heart #rockstar-image {
     transform: scale(1);
 }
 
@@ -255,9 +257,7 @@ h2,
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    /* Aspect Ratio Box (16:9) */
     padding-bottom: 56.25%;
-    /* 16:9 aspect ratio (9/16 * 100) */
     height: 0;
     overflow: hidden;
     border-radius: 10px;
@@ -273,12 +273,10 @@ h2,
     height: 100%;
 }
 
-/* FIX: Added style to make text visible if video fails to load */
 .video-player-area h2 {
     color: var(--secondary-color);
     margin-bottom: 20px;
 }
-
 
 /* --- Section 6: Footer --- */
 .birthday-footer {
@@ -370,6 +368,10 @@ h2,
 
     .separator-banner h2 {
         font-size: 1.2rem;
+    }
+
+    .heart-wrapper {
+        height: 300px;
     }
 
     .big-red-heart {

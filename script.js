@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. Dynamic Age Calculation ---
 
     // **IMPORTANT: Set Anuj's actual birth date here**
-    const anujBirthday = new Date('2014-11-05T00:00:00'); // Example: Nov 5, 2014
+    const anujBirthday = new Date('2014-11-05'); // Example: Nov 5, 2014
+    
     const today = new Date();
 
     function calculateAge(birthDate, currentDate) {
