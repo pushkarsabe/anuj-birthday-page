@@ -42,12 +42,84 @@
         </section>
 
         <div class="separator-banner invert-banner">
-            <h2>Games & Fun Ahead!</h2>
+            <h2>🎮 Time to Play Whack-A-Mole! 🚀</h2>
         </div>
 
         <section id="game-section" class="content-section game-area">
-            <h2>🎮 Coming Soon: Whack-A-Mole! 🚀</h2>
-            <p>We're currently building the best birthday game for you, Anuj!</p>
+            <h2>🔨 Whack-A-Anuj Challenge!</h2>
+            <p class="game-instruction">Click on Anuj when he pops up! How many can you hit in 30 seconds?</p>
+
+            <div class="game-controls">
+                <button id="start-btn" class="game-btn">Start Game</button>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Score:</span>
+                        <span id="score" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Time:</span>
+                        <span id="timer" class="stat-value">30</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">High Score:</span>
+                        <span id="high-score" class="stat-value">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-board">
+                <div class="hole" data-index="0">
+                    <div class="mole">
+                        <img src="./game.jpg" alt="Anuj" class="mole-face">
+                    </div>
+                </div>
+                <div class="hole" data-index="1">
+                    <div class="mole">
+                        <img src="./game.jpg" alt="Anuj" class="mole-face">
+                    </div>
+                </div>
+                <div class="hole" data-index="2">
+                    <div class="mole">
+                        <img src="./game.jpg" alt="Anuj" class="mole-face">
+                    </div>
+                </div>
+                <div class="hole" data-index="3">
+                    <div class="mole">
+                        <img src="./game.jpg" alt="Anuj" class="mole-face">
+                    </div>
+                </div>
+                <div class="hole" data-index="4">
+                    <div class="mole">
+                        <img src="./game.jpg" alt="Anuj" class="mole-face">
+                    </div>
+                </div>
+                <div class="hole" data-index="5">
+                    <div class="mole">
+                        <img src="./game.jpg" alt="Anuj" class="mole-face">
+                    </div>
+                </div>
+                <div class="hole" data-index="6">
+                    <div class="mole">
+                        <img src="./game.jpg" alt="Anuj" class="mole-face">
+                    </div>
+                </div>
+                <div class="hole" data-index="7">
+                    <div class="mole">
+                        <img src="./game.jpg" alt="Anuj" class="mole-face">
+                    </div>
+                </div>
+                <div class="hole" data-index="8">
+                    <div class="mole">
+                        <img src="./game.jpg" alt="Anuj" class="mole-face">
+                    </div>
+                </div>
+            </div>
+
+            <div id="game-over-message" class="game-over hidden">
+                <h3>🎉 Game Over! 🎉</h3>
+                <p>Your Score: <span id="final-score">0</span></p>
+                <button id="play-again-btn" class="game-btn">Play Again</button>
+            </div>
         </section>
 
         <section id="video-section" class="content-section video-player-area">
