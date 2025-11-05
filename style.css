@@ -234,6 +234,30 @@ h2,
     transform: scale(1);
 }
 
+/* Mobile touch states for heart */
+.big-red-heart.heart-revealed .heart-left {
+    transform: translate(-400px, 0) rotate(-75deg) scale(0.9);
+    opacity: 0;
+}
+
+.big-red-heart.heart-revealed .heart-right {
+    transform: translate(400px, 0) rotate(75deg) scale(0.9);
+    opacity: 0;
+}
+
+.big-red-heart.heart-revealed .heart-text {
+    opacity: 0;
+}
+
+.image-behind-heart.image-revealed {
+    opacity: 1;
+    z-index: 999;
+}
+
+.image-behind-heart.image-revealed #rockstar-image {
+    transform: scale(1);
+}
+
 /* --- Section 4: Whack-A-Mole Game --- */
 .game-area {
     background: linear-gradient(135deg, var(--game-bg), #689f38);

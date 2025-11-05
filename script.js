@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- 1. Dynamic Age Calculation ---
-    const anujBirthday = new Date('2014-11-05'); 
+    const anujBirthday = new Date('2014-11-05');
     const today = new Date();
 
     function calculateAge(birthDate, currentDate) {
@@ -227,4 +227,32 @@ document.addEventListener('DOMContentLoaded', () => {
     moles.forEach(mole => {
         mole.addEventListener('click', whack);
     });
+
+    // --- 4. Mobile Touch Support for Heart ---
+    const hoverHeart = document.getElementById('hover-heart');
+    const imageBehindHeart = document.querySelector('.image-behind-heart');
+    let heartRevealed = false;
+
+    // Function to reveal/hide heart
+    function toggleHeart() {
+        if (!heartRevealed) {
+            // Reveal the image
+            hoverHeart.classList.add('heart-revealed');
+            imageBehindHeart.classList.add('image-revealed');
+            heartRevealed = true;
+        } else {
+            // Hide the image
+            hoverHeart.classList.remove('heart-revealed');
+            imageBehindHeart.classList.remove('image-revealed');
+            heartRevealed = false;
+        }
+    }
+
+    // Touch support for mobile
+    if ('ontouchstart' in window) {
+        hoverHeart.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleHeart();
+        });
+    }
 });
